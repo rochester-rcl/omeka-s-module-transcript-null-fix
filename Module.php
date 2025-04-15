@@ -70,6 +70,10 @@ class Module extends AbstractModule
      */
     public static function stripLocaleToLang($locale)
     {
+        if (is_null($locale)){ #Extra null check added for reliability; encountered a null exception that led me here.
+            $locale = "";
+        }
+
         return explode('_', $locale)[0];
     }
 }
